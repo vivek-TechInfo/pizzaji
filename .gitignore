@@ -1,0 +1,11 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependency directories
+jspm_packages/
+node_modules/
+hooks/
+.DS_Store
+.vscode/

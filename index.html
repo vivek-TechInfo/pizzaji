@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self' file: filesystem: data: gap: https://ssl.gstatic.com ;
+    connect-src 'self' ws: file: filesystem: https://jsonplaceholder.typicode.com/ http://mora0199.edumedia.ca/ http://localhost:3030/ https://mora0199.github.io/;
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com/ https://stackpath.bootstrapcdn.com/ ;
+    font-src 'self' data: https://fonts.gstatic.com https://fonts.googleapis.com https://cdnjs.cloudflare.com https://stackpath.bootstrapcdn.com/ ;
+    script-src 'self' 'unsafe-inline' https://stackpath.bootstrapcdn.com/ https://code.jquery.com/ https://cdnjs.cloudflare.com/ ;
+    img-src 'self' data: content: ;">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="referrer" content="origin">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="viewport"
+    content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+  <link rel="icon" href="img/favicon.png" type="image/x-icon">
+  <title>Four &agrave; Pizza - Pizz&eacute;ria</title>
+</head>
+
+<body>
+  <!-- Header/Menu window -->
+  <div class="overlay-menu hide">&nbsp;</div>
+  <div class="header" id="header">
+    <img class="logo" id="logo" src="img/logo.png" />
+    <nav id="menu" class="menu">
+      <ul>
+        <li><a href="" class="active" id="mn-home" data-name="index">Home</a></li>
+        <li><a href="" class="" id="mn-ctt" data-name="contact">Contact</a></li>
+        <li><a href="" class="" id="mn-about" data-name="about">About</a></li>
+        <li id="admin-hide" class=""><a href="#" class="nav-link disabled" tabindex="-1" aria-disabled="true"
+            id="mn-admin">Admin</a></li>
+        <li class="nav-item dropdown hide" id="mn-admin-si">
+          <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false" data-name="admin">
+            Admin
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" id="mn-chgpwd" href="#">Change Password</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <h6 class="submenu text-center" id="sub-menu-si">
+      <a href="" id="signinlnk" data-name="signin">Sign-In</a>&nbsp;|&nbsp;
+      <a href="" id="signuplnk" data-name="register">Sign-Up</a>
+    </h6>
+    <h6 class="submenu text-center hide" id="sub-menu-so">
+      <a href="" id="signoutlnk" data-name="signout">Sign-Out</a>
+    </h6>
+  </div>
+
+  <!-- Main pages -->
+  <div class="pages hide" id="signin">
+    <div class="card-deck">
+      <div class="card mb-4 border-0">
+        <div class="text-center card-body">
+          <img class="card-img-top rounded shadow" id="img_contact" src="img/mainimg.jpeg" alt="Sign In">
+          <p></p>
+          <p class="h3">Please Sign In</p>
+          <form class="form-signin">
+            <label for="inputEmail" class="sr-only">Email address</label>
+            <input type="email" id="inputEmailSI" class="form-control" placeholder="Email address" required=""
+              autofocus="true">
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" id="inputPasswordSI" class="form-control" placeholder="Password" required="">
+            <div class="checkbox mb-3">
+              <label>
+                <input type="checkbox" value="rememberLS"> Remember me
+              </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" id="submitSIN" type="submit">Sign In</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pages hide" id="signup">
+    <div class="card-deck">
+      <div class="card mb-4 border-0">
+        <div class="text-center card-body">
+          <img class="card-img-top rounded shadow" id="img_contact" src="img/mainimg.jpeg" alt="Sign Up">
+          <p></p>
+          <p class="h3">Sign Up</p>
+          <div class="card-body text-left">
+            <form class="needs-validation" novalidate id="form_val">
+              <div class="form-row">
+                <div class="col-md-6 mb-4">
+                  <label for="validationCustom01">First Name</label>
+                  <input type="text" class="form-control" id="first_name" placeholder="Type your First name" required=""
+                    autofocus="true">
+                  <div class="invalid-feedback">
+                    Please provide your First name.
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-6 mb-4">
+                  <label for="validationCustom02">Last Name</label>
+                  <input type="text" class="form-control" id="last_name" placeholder="Type your Last name" required>
+                  <div class="invalid-feedback">
+                    Please provide your Last name.
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-6 mb-4">
+                  <label for="validationCustomEmail">e-Mail</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="email">@</span>
+                    </div>
+                    <input type="text" class="form-control" id="validEmail" placeholder="Type your e-Mail"
+                      aria-describedby="inputGroupPrepend" required>
+                    <div class="invalid-feedback">
+                      Please fill your e-Mail.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-6 mb-4">
+                  <label for="inputPassword">Password</label>
+                  <div class="input-group">
+                    <input type="password" class="form-control" id="inputPasswordSU" placeholder="Type your password"
+                      required>
+                    <div class="invalid-feedback">
+                      Please fill your password.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-6 mb-4">
+                  <label for="userType">User Type</label>
+                  <div class="input-group">
+                    <select id="userType" class="form-control">
+                      <option value="C" selected>Customer</option>
+                      <option value="S">Staff</option>
+                    </select>
+                    <div class="invalid-feedback">
+                      Please select your user type.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p></p>
+              <button class="btn btn-lg btn-primary" id="submitSUP" type="submit">Sign Up</button>
+              <p></p>
+              <p>&nbsp;</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pages hide" id="chgpwd">
+    <h2>ADM Change Password</h2>
+  </div>
+  <div class="pages hide" id="adm-lstpizza">
+    <h2>ADM List Pizza</h2>
+  </div>
+  <div class="pages hide" id="adm-addpizza">
+    <h2>ADM Add Pizza</h2>
+  </div>
+  <div class="pages hide" id="adm-lstingr">
+    <h2>ADM List Ingredients</h2>
+  </div>
+  <div class="pages hide" id="adm-addingr">
+    <h2>ADM Add Ingredients</h2>
+  </div>
+  <div class="pages hide" id="contact">
+    <h2>Contact page</h2>
+  </div>
+  <div class="pages hide" id="about">
+    <h2>About page</h2>
+  </div>
+  <div class="pages hide" id="startup">
+    <h2>Startup Screen</h2>
+  </div>
+
+  <!-- Info/Success/Warning window -->
+  <div class="overlay hide">&nbsp;</div>
+  <div class="modal off">
+    <div class="" id="infotype">
+      <h2 id="idtype"></h2>
+    </div>
+    <div class="modal-msg">
+      <h5 id="msgStt"></h5>
+      <h5 id="msgCod"></h5>
+      <h5 id="msgTit"></h5>
+      <h5 id="msgDet"></h5>
+    </div>
+    <button class="closebtn" id="closebtn">Close</button>
+  </div>
+
+  <!-- Footer window -->
+  <div class="footer text-center py-2">
+    <h6>&copy; Copyright 2019 Four &agrave; Pizza - All rights reserved</h6>
+  </div>
+
+  <script type="text/javascript" src="js/main.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+  <script>
+    // Function to pre-validate the form before submission to Sign Up
+    (function () {
+      'use strict';
+      window.addEventListener('load', function () {
+        let forms = document.getElementsByClassName('needs-validation');
+        let validation = Array.prototype.filter.call(forms, function (form) {
+          form.addEventListener('submit', function (event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+
+  </script>
+
+</body>
+
+</html>
